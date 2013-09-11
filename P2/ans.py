@@ -1,14 +1,16 @@
 
 if __name__ == "__main__":
 
-	past = 1
-	cur = 2
+	# even fibonnaci numbers follow own sequence, so easy to do
+	# F(n) = 4*F(n-6)+F(n-3)
+
+	past = 2
+	cur = 8
 	sum = 0
 	while cur < 4000000:
-		if (cur%2 == 0):
-			sum = sum + cur
+		sum = sum + cur
 
-		new = past+cur
+		new = 4*cur+past
 		past = cur
 		cur = new
 
