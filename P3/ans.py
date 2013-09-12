@@ -1,26 +1,36 @@
 
 import sys
 
-def max_factor(num,max):
-	factor = first_factor(num)
+def max_factor(num):
 
-	if (factor > max):
-		max = factor
+# first divide out two as much as possible
+# so we can go up by two each time
+	
+	max = 0
 
+	while (num%2 == 0):
+		num = num/2
+		max = 2
 
-	num = num/factor
+	test = 3
 
+	while(num > max):
+		if (num%test == 0):
+			num = num/test	
+			if (test > max):
+				max = test
+			if (num == 1):
+				return max
+			test = 3
+		else:
+			test = test + 2
 
-	if (num == 1):
-		return max
-	else:
-		return max_factor(num,max)
+		# check if we're above, sqrt(num)
+		# if so, we're done
+		if (test > num^(1/2)):
+			return num
 
-
-def first_factor(num):
-	for i in range(2,num+1):
-		if (num%i == 0):
-			return i
+	return max
 
 
 if __name__ == "__main__":
@@ -33,6 +43,6 @@ if __name__ == "__main__":
 
 	max = 0
 	
-	ans = max_factor(num,max)
+	ans = max_factor(num)
 	print(ans)
 	
